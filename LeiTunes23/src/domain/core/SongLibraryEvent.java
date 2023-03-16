@@ -1,6 +1,8 @@
 package domain.core;
 
-public abstract class SongLibraryEvent
+import util.observer.*;
+
+public abstract class SongLibraryEvent implements Event
 {
 
 }

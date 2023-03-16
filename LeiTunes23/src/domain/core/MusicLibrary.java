@@ -4,6 +4,10 @@ package domain.core;
 public class MusicLibrary 
 {
 
+	public MusicLibrary()
+	{
+		
+	}
 
 	public void play()
 	{

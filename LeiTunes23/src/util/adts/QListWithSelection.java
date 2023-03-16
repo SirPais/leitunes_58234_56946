@@ -1,11 +1,9 @@
 package util.adts;
 
-public interface QListWithSelection<E>
+public interface QListWithSelection<E> extends QList<E>
 {
-
+	
 	void select (int i);
-
-	void add(E e);
 	
 	boolean someSelected();
 	
@@ -18,8 +16,5 @@ public interface QListWithSelection<E>
 	void remove();
 	
 	E getSelected();
-	
-	
-	
-	
+			
 }
