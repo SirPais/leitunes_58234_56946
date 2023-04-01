@@ -1,20 +1,22 @@
 package util.adts;
 
+
 public interface QListWithSelection<E> extends QList<E>
 {
 	
-	void select (int i);
+	abstract void select (int i);
 	
-	boolean someSelected();
+	abstract boolean someSelected();
 	
-	int getIndexSelected();
+	abstract int getIndexSelected();
 	
-	void next();
+	abstract void next();
 	
-	void previous();
+	abstract void previous();
 	
-	void remove();
+	abstract void remove();
 	
-	E getSelected();
-			
+	abstract E getSelected();
+	
+
 }

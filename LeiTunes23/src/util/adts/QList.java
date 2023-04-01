@@ -13,6 +13,7 @@ import java.util.Iterator;
  */
 public interface QList<E> extends Iterable<E> {
 
+	
 	/**
 	 * Returns the number of elements in the list 
 	 * 

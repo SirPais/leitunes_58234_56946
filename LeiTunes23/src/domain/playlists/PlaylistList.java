@@ -94,6 +94,9 @@ public class PlaylistList implements QListWithSelection<Playlist>
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+	
 	
 	
 	

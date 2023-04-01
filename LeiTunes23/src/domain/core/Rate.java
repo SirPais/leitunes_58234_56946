@@ -1,7 +1,7 @@
 package domain.core;
 
 
-
+// ALTERAR PARA FICAR IMUTAVEL
 public class Rate
 {
 	

@@ -115,6 +115,13 @@ public class ArrayQListWithSelection<E> extends AbsQListWithSelection<E>
 		}
 		
 	}
+	
+	// Devolve o elemento selecionado
+	@Override
+	public E getSelected() 
+	{
+		return this.selected;
+	}
 
 
 }
