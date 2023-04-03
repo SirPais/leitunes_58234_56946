@@ -11,7 +11,6 @@ import java.util.Iterator;
 
 public abstract class AbsQListWithSelection<E>  implements QListWithSelection<E>
 {
-	// Elemento selecionado
 	E selected = null;
 	
 	

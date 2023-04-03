@@ -25,7 +25,6 @@ public class MusicLibrary extends AbsQListWithSelection<Song> implements QListWi
     	this.playing = true;
     }
     
-    //por fazer
     public boolean isPlaying()
     {
     	
@@ -64,8 +63,7 @@ public class MusicLibrary extends AbsQListWithSelection<Song> implements QListWi
         playingSong.decRating();
     }
     
-    //////////////////////////////////////////////////
-    //POR FAZER
+
     public Iterable<ISong> getMatches(String reexp)
     {
         return null;

@@ -148,9 +148,7 @@ public abstract class AbsPlaylist implements Playlist
 		return null;
 	}
     
-    
-    ///////////////////////////////////////////////////////////////
-    // POR FAZER
+
     
     @Override
     public void propertyChange(PropertyChangeEvent evt)
