@@ -9,7 +9,7 @@ public class Song implements ISong, RegExpMatchable
 	
 	SongMetaInfo info = null;
 	String fileName = null;
-	Rate rating = null;
+	Rate rating = new Rate(0);
 	int numTimesPlayed = 0;
 	
 	
@@ -89,6 +89,11 @@ public class Song implements ISong, RegExpMatchable
 		return this.info.matches(regexp);
 	}
 
+	@Override
+	public String toString()
+	{
+		return (this.info.toString() + " - " + this.rating + " - " + this.numTimesPlayed);
+	}
 	
 	
 	

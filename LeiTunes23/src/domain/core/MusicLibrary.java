@@ -1,7 +1,6 @@
 package domain.core;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import domain.facade.ISong;
@@ -11,18 +10,18 @@ import util.adts.QListWithSelection;
 import util.observer.Listener;
 import util.observer.Subject;
 
-public class MusicLibrary extends AbsQListWithSelection<ISong> implements QListWithSelection<ISong> , Subject<SongLibraryEvent>, PropertyChangeListener
+public class MusicLibrary extends AbsQListWithSelection<Song> implements QListWithSelection<Song> , Subject<SongLibraryEvent>, PropertyChangeListener
 {
     ISong playingSong = null;
     boolean playing = false;
-    QListWithSelection<ISong> queue = new ArrayQListWithSelection<ISong>();
+    QListWithSelection<Song> queue = new ArrayQListWithSelection<Song>();
     
 
     
     
     public void play()
     {
-    	this.playingSong = (Song) this.queue.getSelected();
+    	this.playingSong = this.queue.getSelected();
     	this.playing = true;
     }
     
@@ -35,7 +34,7 @@ public class MusicLibrary extends AbsQListWithSelection<ISong> implements QListW
     		return false;
     	}
     	
-    	Iterator<ISong> iter = this.queue.iterator();
+    	Iterator<Song> iter = this.queue.iterator();
     	
     	while(iter.hasNext())
     	{
@@ -72,12 +71,70 @@ public class MusicLibrary extends AbsQListWithSelection<ISong> implements QListW
         return null;
     }
     
-    public Iterable<ISong> getSongs()
+    public Iterable<Song> getSongs()
     {
         return queue;
     }
-    
 
+    //////////////////////////////////////////////////
+    /////IMPLEMENTAÇÕES DE ABS_QLISTWITHSELECTION/////
+    /////////////////////////////////////////////////
+    
+    
+    @Override
+    public Song getSelected()
+    {
+    	return this.queue.getSelected();
+    }
+    
+    @Override
+    public int size()
+    {
+    	return this.queue.size();
+    }
+
+    @Override
+    public void add(Song song)
+    {
+    	this.queue.add(song);
+    }
+
+    @Override
+    public void remove()
+    {
+    	this.queue.remove();
+    }
+    
+    @Override
+    public void select (int i)
+    {
+    	this.queue.select(i);
+    }
+    
+    @Override
+    public void moveUp(int i)
+    {
+    	this.queue.moveUp(i);
+    }
+    
+    @Override
+    public int getIndexSelected()
+    {
+    	return queue.getIndexSelected();
+    }
+    
+    @Override
+    public void next()
+    {
+    	this.queue.next();
+    }
+    
+    @Override
+    public void previous()
+    {
+    	this.queue.previous();
+    }
+    
     
     /////////////////////////////////////////////////
 
@@ -91,22 +148,40 @@ public class MusicLibrary extends AbsQListWithSelection<ISong> implements QListW
 	}
 
 	@Override
-	public void emitEvent(SongLibraryEvent e) {
+	public void emitEvent(SongLibraryEvent e) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void registerListener(Listener<SongLibraryEvent> obs) {
+	public void registerListener(Listener<SongLibraryEvent> obs) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void unregisterListener(Listener<SongLibraryEvent> obs) {
+	public void unregisterListener(Listener<SongLibraryEvent> obs) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+    public String toString() {
+        StringBuilder resultado = new StringBuilder("*****MUSIC LIBRARY****\n");
+        int index = 0;
+        if (this.size() > 0)
+        {
+        	for (Song music : queue) {
+                resultado.append(index + "-" + music.toString() + "\n");
+                index++;
+            }
+        }
+        
+        return resultado.toString();
+    }
 
     
 }

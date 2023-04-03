@@ -18,10 +18,10 @@ public class SimpleClient {
 	/**
 	 * An utility class should not have public constructors
 	 */
-	private SimpleClient() {
+	private SimpleClient()  {
 	}
 
-	public static void main (String [] args) throws InterruptedException {
+	public static void main (String [] args) throws Exception {
 		
 		LEITunes tunes = new  LEITunes();
 		
@@ -67,7 +67,7 @@ public class SimpleClient {
 	 * 
 	 * @param slc the music library controller
 	 */
-	private static void addToLibraryTenSongs(MusicLibraryController slc) {
+	private static void addToLibraryTenSongs(MusicLibraryController slc) throws Exception {
 		System.out.println("\n----------------------------------------------- ");		
 		System.out.println("           Adding songs to library                ");
 		System.out.println("-----------------------------------------------\n ");
@@ -106,7 +106,10 @@ public class SimpleClient {
 	 */
 	private static void addToPlaylist(int index, List<Integer> asList, PlaylistListController plc, MusicLibraryController slc) {		
 		plc.selectPlaylist(index);
+			
 		String playlist = plc.getSelectedPlaylist().getName();
+		
+		
 		for(int i: asList) {
 			slc.selectSong(i);
 			plc.addSong();	

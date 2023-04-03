@@ -15,7 +15,7 @@ public class ArrayQListWithSelection<E> extends AbsQListWithSelection<E>
 {
 	
 	//Lista de Elementos Selecionados
-	ArrayList<E> songs = new ArrayList<E>();
+	ArrayList<E> objs = new ArrayList<E>();
 	
 	//Construtor de ArrayQListWithSelection
 	public ArrayQListWithSelection()
@@ -27,7 +27,7 @@ public class ArrayQListWithSelection<E> extends AbsQListWithSelection<E>
 	@Override
 	public int size() 
 	{
-		return this.songs.size();
+		return this.objs.size();
 	}
 
 	// Recebe um inteiro, devolve o elemento E nessa posição
@@ -35,14 +35,14 @@ public class ArrayQListWithSelection<E> extends AbsQListWithSelection<E>
 	@Override
 	public E get(int i) 
 	{
-		return (this.songs.get(i));
+		return (this.objs.get(i));
 	}
 
 	
 	// Devolve a lista de musicas ma forma de um iterador
 	@Override
 	public Iterator<E> iterator() {
-		return(this.songs.iterator());
+		return(this.objs.iterator());
 	}
 	
 	// Recebe um numero inteiro, altera o elemento E selecionado para o elemento da lista no indice selecionado
@@ -68,7 +68,7 @@ public class ArrayQListWithSelection<E> extends AbsQListWithSelection<E>
 	@Override
 	public void add(E e) 
 	{
-		this.songs.add(e);
+		this.objs.add(e);
 		this.select(this.size() - 1);
 		
 	}
@@ -85,21 +85,21 @@ public class ArrayQListWithSelection<E> extends AbsQListWithSelection<E>
 	@Override
 	public int getIndexSelected() 
 	{
-		return this.songs.indexOf(selected);
+		return this.objs.indexOf(selected);
 	}
 	
 	// Seleciona o elemento seguinte da queue, caso nao seja possivel coloca o elemento selecionado como nulo 
 	@Override
 	public void next() 
 	{	
-		select(this.songs.indexOf(selected) + 1);	
+		select(this.objs.indexOf(selected) + 1);	
 	}
 
 	// Seleciona o elemento anterior da queue, caso nao seja possivel coloca o elemento selecionado como nulo 
 	@Override
 	public void previous() 
 	{
-		select(this.songs.indexOf(selected) - 1);	
+		select(this.objs.indexOf(selected) - 1);	
 	}
 
 	// Apaga o elemento selecionado caso exista um elemento selecionado
@@ -108,7 +108,7 @@ public class ArrayQListWithSelection<E> extends AbsQListWithSelection<E>
 	{
 		if(this.someSelected())
 		{
-			this.songs.remove(this.songs.indexOf(selected));
+			this.objs.remove(this.objs.indexOf(selected));
 			
 			this.previous();
 					
@@ -123,5 +123,13 @@ public class ArrayQListWithSelection<E> extends AbsQListWithSelection<E>
 		return this.selected;
 	}
 
+	@Override
+	public void moveUp(int i)
+	{
+		this.objs.remove(selected);	
+		this.objs.add(i, selected);
+	}
+	
+	
 
 }

@@ -17,6 +17,7 @@ public interface QListWithSelection<E> extends QList<E>
 	abstract void remove();
 	
 	abstract E getSelected();
-	
+
+	abstract void moveUp(int i);
 
 }

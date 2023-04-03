@@ -1,104 +1,79 @@
 package domain.playlists;
 
-import java.util.Iterator;
 
 import domain.core.*;
 import util.adts.*;
 
-public class PlaylistList implements QListWithSelection<Playlist>
+public class PlaylistList extends AbsQListWithSelection<Playlist> implements QListWithSelection<Playlist>
 {
+	
+	Playlist selectedList = null;
+	
+	QListWithSelection<Playlist> lists = new ArrayQListWithSelection<Playlist>();
+	
 	
 	public PlaylistList(MusicLibrary library)
 	{
-		
+		this.lists.add(new MostLikedSongsPlaylist(library));
+		this.lists.add(new MostRecentlyAddedSongsPlaylist(library));
 	}
+	
 	
 	public void play()
 	{
-		
+		selectedList.play();
 	}
 	
 	public boolean isPlaying()
 	{
+		for (Playlist p : lists)
+		{
+			if(p.isPlaying())
+			{
+				return true;
+			}
+		}
 		return false;
 	}
 	
 	public void stop()
 	{
-		
+		this.selectedList.stop();
 	}
-	
-	
+
 	@Override
-	public void select (int i) 
+	public void add(Playlist list)
 	{
-		
+		this.lists.add(list);
 	}
-	
-	@Override
-	public void add(Playlist e)
-	{
-		
-	}
-	
-	@Override
-	public boolean someSelected() 
-	{
-		return false;
-	}
-	
-	@Override
-	public int getIndexSelected()
-	{
-		return 0;
-	}
-	
-	@Override
-	public void next() 
-	{
-		
-	}
-	
-	@Override
-	public void previous()
-	{
-		
-	}
-	
-	@Override
-	public void remove()
-	{
-		
-	}
-	
+
 	@Override
 	public Playlist getSelected()
 	{
-		return null;
+		return this.selectedList;
 	}
-
+	
 	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void select(int i)
+	{
+		this.selectedList = lists.get(i);
 	}
-
+	
 	@Override
-	public Playlist get(int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public String toString()
+	{
+		StringBuilder sb = new StringBuilder("***** PLAYLISTS *****\n");
+		int index = 0;
+		for(Playlist lista : this.lists)
+		{
+			sb.append(index + " - " + lista.toString());
+			index++;
+		}
+		
+		return sb.toString();
 	}
-
-	@Override
-	public Iterator<Playlist> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 	
 	
 	
-	
-	
+		
 }

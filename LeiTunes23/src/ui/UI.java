@@ -136,7 +136,7 @@ public class UI {
 
 
 
-	public void run() {
+	public void run() throws Exception {
 		loadSongsAndPlaylists();
 
 		// cria a janela
@@ -296,7 +296,7 @@ public class UI {
 	/**
 	 * Load some songs and playlists 
 	 */
-	private void loadSongsAndPlaylists() {
+	private void loadSongsAndPlaylists() throws Exception{
 		songsLibraryController.addSong("songs/Goldberg Variations.mp3");
 		songsLibraryController.addSong("songs/MeuFado.mp3");
 		songsLibraryController.addSong("songs/Fado Tordo.mp3");

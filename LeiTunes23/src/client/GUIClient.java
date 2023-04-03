@@ -13,7 +13,7 @@ public class GUIClient {
 	/**
 	 * The method for the start up of the system 
 	 */
-	public static void main (String [] args) {
+	public static void main (String [] args) throws Exception {
 		LEITunes leiTunes = new LEITunes ();
 		UI ui = new UI (leiTunes.getPlaylistController(), 
 						leiTunes.getMusicLibraryController());

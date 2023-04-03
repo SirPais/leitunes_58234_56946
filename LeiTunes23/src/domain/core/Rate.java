@@ -21,5 +21,12 @@ public class Rate
 	{
 		this.rating--;
 	}
+	
+	@Override
+	public String toString()
+	{
+		return String.valueOf(rating);
+	}
+	
 }
 

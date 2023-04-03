@@ -1,6 +1,5 @@
 package util.adts;
 
-import java.util.Collections;
 import java.util.Iterator;
 
 /**
@@ -31,7 +30,7 @@ public abstract class AbsQListWithSelection<E>  implements QListWithSelection<E>
 	@Override
 	public boolean someSelected()
 	{
-		return false;
+		return this.selected != null;
 	}
 	
 	@Override
@@ -81,7 +80,12 @@ public abstract class AbsQListWithSelection<E>  implements QListWithSelection<E>
 	{
 		return null;
 	}
-	
+
+	@Override
+	public void moveUp(int i)
+	{
+		
+	}
 
 	
 	
